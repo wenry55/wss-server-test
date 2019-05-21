@@ -1,0 +1,9 @@
+node_modules/
+hfc-key-store/
+out/
+crypto-config/
+conn_profiles/
+channel-artifacts/
+*.zip
+bcn/
+hlf-kvs/

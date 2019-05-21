@@ -1,0 +1,15 @@
+{
+  "name": "workbench-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node workbench-server-test.js",
+    "cert": "echo \"run cert.bat and input necessay information.\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0"
+  }
+}
