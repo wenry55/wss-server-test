@@ -1,7 +1,7 @@
 var https = require("https");
 const querystring = require("querystring");
 
-var bigmsg = "x".repeat(1024 * 1024 * 1);
+var bigmsg = "x".repeat(1024 * 70 * 1);
 
 var post_data = querystring.stringify({
   msg: bigmsg
@@ -21,14 +21,21 @@ var options = {
 };
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+var count = 10000;
 
 function send() {
+  count--;
   var req = https.request(options, function(res) {
     //console.log('STATUS: ' + res.statusCode);
     //console.log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding("utf8");
     res.on("data", function(chunk) {
       //console.log('BODY: ' + chunk);
+        if (count > 0) {
+          send()
+        } else {
+          console.log('end : ', `${new Date()}`);
+        }
     });
   });
 
@@ -45,10 +52,10 @@ function send() {
 }
 
 console.log(`${new Date()}`);
-for (var i = 0; i < 100; i++) {
-  send();
-}
-console.log(`${new Date()}`);
+
+send();
+
+
 
 console.log("Press any key to exit");
 
